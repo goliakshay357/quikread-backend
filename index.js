@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan')
 
+
+// Loading routes
+const router = require('./routes/index');
+
 // Load config
 dotenv.config({ path: './config/config.env' })
 
@@ -24,6 +28,8 @@ app.get("/", function (req, res) {
     message: "Welcome to Quikreads API Server🚀"
   });
 });
+
+app.use('/api/v1', router);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
