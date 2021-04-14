@@ -1,5 +1,5 @@
 // Import DB model
-
+const {Books} = require("../../models/db");
 // Import status
 const { httpStatus200, httpStatus500 } = require("../../status/httpStatus");
 
