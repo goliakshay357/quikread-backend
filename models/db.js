@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 const dotenv = require('dotenv')
+const path = require('path');
+
+// Load config
+var dir = path.join(__dirname, '../config/config.env')
+dotenv.config({ path: dir })
 
 mongoose
-	.connect("mongodb://localhost:2717/quickreads", {
+	.connect(process.env.DATABASE_HOST_URL, {
 		useNewUrlParser: true,
 		useFindAndModify: false,
 		useCreateIndex: true,
