@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  # Quikreads Backend
+  quikreads-backend:
+    build: ./
+    env_file: ./config/config.env
+    ports:
+      - '3000:3000'
+    networks:
+      - docker_net
+    depends_on:
+      - mongo
+  
+  #mongo db image 
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=quikreads
+    ports:
+      - "2717:27017"
+    networks:
+      - docker_net
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+networks:
+  docker_net:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
