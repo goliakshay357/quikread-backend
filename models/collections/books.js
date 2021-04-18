@@ -8,9 +8,6 @@ created_on:{
     type:Date,
     default:Date.now()
 },
-last_accessed_on:{
-    type:Date
-},
 
 isbn: {
   type: Number,
@@ -86,11 +83,11 @@ total_rating: {
   type: Number
 },
 
-ratingd:[
-  {
-    type: Object
-  }
-]
+// ratingd:[
+//   {
+//     type: Object
+//   }
+// ]
 
 })
 
