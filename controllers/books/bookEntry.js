@@ -5,8 +5,16 @@ const {Books} = require("../../models/db");
 // Import status
 const { httpStatus200, httpStatus500 } = require("../../status/httpStatus");
 
+
 exports.bookEntry = async (req, res) => {
 try{
+  
+  // ISBN Checking
+  const isbn_checking = await Books.find({isbn: req.body.isbn});
+  if(isbn_checking.length !== 0){
+    res.status(200).json(httpStatus500({message:"ISBN Number already exists"}));  
+  }
+  
   // Create book entry
   console.log(req.body, "Body");
   const book = await new Books({
