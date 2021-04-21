@@ -8,6 +8,7 @@ const { httpStatus200, httpStatus500 } = require("../../status/httpStatus");
 exports.bookEntry = async (req, res) => {
 try{
   // Create book entry
+  console.log(req.body, "Body");
   const book = await new Books({
     isbn: req.body.isbn,
     book_title: req.body.book_title,
