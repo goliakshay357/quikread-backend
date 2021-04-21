@@ -18,16 +18,15 @@ try{
     youtube_links: req.body.youtube_links,
     podcast_mp3: req.body.podcast_mp3,
     download_links: req.body.download_links,
-    comments: req.body.comments,
-    approved: req.body.approved,
-    likes: req.body.likes,
-    total_rating: req.body.total_rating,
+    approved: false,
+    likes: 0,
+    amazon_purchase: req.body.amazon_purchase,
   })
   await book.save();
   console.log(book);
   return res.status(200).json({
     success: true,
-    message: req.body,
+    message: book,
   });
 
 } catch(error){
