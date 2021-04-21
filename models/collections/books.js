@@ -36,6 +36,10 @@ image_URL: {
   required: true
 },
 
+amazon_purchase: {
+  type: String,
+},
+
 book_category: [
   {
     type: String,
@@ -63,11 +67,11 @@ download_links: [
 ],
 
 // Todo
-comments: [
-  {
-    type: Object,
-  }
-],
+// comments: {
+//     type: [
+
+//     ]
+//   },
 
 approved: {
   type: Boolean,
@@ -83,12 +87,15 @@ total_rating: {
   type: Number
 },
 
-// ratingd:[
-//   {
-//     type: Object
-//   }
-// ]
-
-})
+ratings:{
+  type: [
+    {
+      userID: mongoose.Schema.Types.ObjectId,
+      rating: Number
+    }
+  ],
+  default: []
+}
+},{autoCreate: true})
 
 module.exports = mongoose.model('Books', booksSchema);
