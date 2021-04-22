@@ -30,6 +30,7 @@ try{
     approved: false,
     likes: 0,
     amazon_purchase: req.body.amazon_purchase,
+    book_quote: req.body.book_quote,
   })
   await book.save();
   console.log(book);
