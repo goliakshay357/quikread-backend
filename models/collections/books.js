@@ -54,6 +54,14 @@ youtube_links: [
   }
 ],
 
+
+book_quote: [
+  {
+    type: String,
+    required: true
+  }
+],
+
 podcast_mp3: [
   {
     type: String,
