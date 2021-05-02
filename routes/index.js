@@ -11,7 +11,10 @@ const { checkisbn } = require("../controllers/books/checkisbn")
 // Dasboard
 const { latestBooks } = require("../controllers/dashboard/latestBooks")
 const { customCategory } = require("../controllers/dashboard/customCategory")
-    //Middlewares
+
+// Admin
+
+//Middlewares
 
 // ............................. BOOKS APIS .............................. //
 router.get("/books", getBooks);
@@ -23,4 +26,7 @@ router.get("/books/check-isbn/:isbn", checkisbn);
 // ............................. DASHBOARD ................................. //
 router.get("/latest-books", latestBooks)
 router.get("/category/:book_category", customCategory)
+
+// ............................. ADMIN ..................................... //
+
 module.exports = router;
