@@ -22,8 +22,17 @@ Sentry.init({
     // Set tracesSampleRate to 1.0 to capture 100%
     // of transactions for performance monitoring.
     // We recommend adjusting this value in production
+    integrations: [
+        new Sentry.Integrations.Http({ tracing: true }),
+        new Tracing.Integrations.Express({
+            app,
+        }),
+    ],
     tracesSampleRate: 1.0,
 });
+
+app.use(Sentry.Handlers.requestHandler());
+app.use(Sentry.Handlers.tracingHandler());
 // -------------------------------------------------
 
 
@@ -44,6 +53,7 @@ app.get("/", function(req, res) {
 });
 
 app.use('/api/v1', router);
+app.use(Sentry.Handlers.errorHandler());
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
