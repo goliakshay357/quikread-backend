@@ -17,7 +17,7 @@ const app = express();
 
 // ------------------ Sentry ----------------------
 Sentry.init({
-    dsn: "https://17a9b8469d8946f2884c00dcb6769291@sentry.canvasboard.live/3",
+    dsn: "https://9352bafa2e1f4436a9cb58e47156f0a1@sentry.canvasboard.live/5",
 
     // Set tracesSampleRate to 1.0 to capture 100%
     // of transactions for performance monitoring.
