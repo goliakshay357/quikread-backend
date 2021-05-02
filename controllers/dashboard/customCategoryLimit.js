@@ -9,10 +9,10 @@ exports.customCategoryLimit = async(req, res) => {
         const data = await Books.find({
             book_category: new RegExp(book_category).limit(6)
         })
-        res.status(200).json(httpStatus200(data, "Getting latest top 10 uploaded books"));
+        return res.status(200).json(httpStatus200(data, "Getting latest top 10 uploaded books"));
     } catch (error) {
         if (error) {
-            res.status(500).json(httpStatus500(error))
+            return res.status(500).json(httpStatus500(error))
         }
     }
 }

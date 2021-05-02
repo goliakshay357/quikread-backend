@@ -8,12 +8,12 @@ exports.getBookByisbn = async (req, res) => {
     const isbn = parseInt(req.params.isbn);
     const data = await Books.find({isbn: isbn});
     if(data.length === 0){
-      res.status(500).json(httpStatus500({message:"Number entered does not exist"}));  
+      return res.status(500).json(httpStatus500({message:"Number entered does not exist"}));  
     }
-    res.status(200).json(httpStatus200(data, "Getting book by ISBN Number"));
+    return res.status(200).json(httpStatus200(data, "Getting book by ISBN Number"));
   } catch(error) {
     if(error){
-      res.status(500).json(httpStatus500(error))
+      return res.status(500).json(httpStatus500(error))
     }
   }
 }
