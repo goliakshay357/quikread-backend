@@ -6,6 +6,7 @@ const { httpStatus200, httpStatus500 } = require("../../status/httpStatus");
 exports.customCategory = async(req, res) => {
     try {
         const book_category = req.params.book_category;
+        
         const data = await Books.find({
             book_category: new RegExp("^" +book_category, "i")
         })
