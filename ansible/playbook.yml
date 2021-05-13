@@ -1,0 +1,9 @@
+
+---
+- hosts: all
+  become: true
+
+
+  tasks:
+    - name: navigate to quikreads-backend
+      shell: "./entry.sh"
