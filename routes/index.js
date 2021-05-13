@@ -25,7 +25,7 @@ router.delete("/books/delete-by-isbn/:isbn", deleteBookByisbn)
 router.get("/books/check-isbn/:isbn", checkisbn);
 
 // ............................. DASHBOARD ................................. //
-router.get("/latest-books", latestBooks)
+router.get("/latest-books/:number", latestBooks)
 router.get("/category/:book_category", customCategory)
 router.get("/category/limit/:book_category",customCategoryLimit)
 // ............................. ADMIN ..................................... //
