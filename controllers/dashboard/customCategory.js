@@ -7,7 +7,7 @@ exports.customCategory = async(req, res) => {
     try {
         const book_category = req.params.book_category;
         const data = await Books.find({
-            book_category: new RegExp(book_category)
+            book_category: new RegExp("^" +book_category, "i")
         })
         return res.status(200).json(httpStatus200(data, "Getting latest top 10 uploaded books"));
     } catch (error) {

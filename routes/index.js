@@ -11,6 +11,7 @@ const { checkisbn } = require("../controllers/books/checkisbn")
 // Dasboard
 const { latestBooks } = require("../controllers/dashboard/latestBooks")
 const { customCategory } = require("../controllers/dashboard/customCategory")
+const { customCategoryLimit } = require("../controllers/dashboard/customCategoryLimit")
 
 // Admin
 
@@ -26,7 +27,7 @@ router.get("/books/check-isbn/:isbn", checkisbn);
 // ............................. DASHBOARD ................................. //
 router.get("/latest-books", latestBooks)
 router.get("/category/:book_category", customCategory)
-
+router.get("/category/limit/:book_category",customCategoryLimit)
 // ............................. ADMIN ..................................... //
 
 module.exports = router;
