@@ -7,7 +7,6 @@ exports.deleteBookByisbn = async(req, res) => {
     try {
         const isbn = parseInt(req.params.isbn);
         const data = await Books.deleteMany({ isbn: isbn });
-
         return res.status(200).json(httpStatus200(data, "Deleted book by ISBN Number"));
     } catch (error) {
         if (error) {
