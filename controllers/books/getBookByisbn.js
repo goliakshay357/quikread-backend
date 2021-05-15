@@ -7,6 +7,7 @@ exports.getBookByisbn = async (req, res) => {
   try {
     const isbn = parseInt(req.params.isbn);
     const data = await Books.find({isbn: isbn});
+    console.log(typeof data, data)
     if(data.length === 0){
       return res.status(500).json(httpStatus500({message:"Number entered does not exist"}));  
     }
