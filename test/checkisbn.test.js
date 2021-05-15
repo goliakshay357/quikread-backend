@@ -1,17 +1,18 @@
-const {getBookByisbn} = require('../controllers/books/getBookByisbn');
+const {checkisbn} = require('../controllers/books/checkisbn');
 const {Books} = require("../models/db");
 const res = {
     json: function(d) {},
     status: function(s) {this.statusCode = s; return this;}
 };
-describe("getBookByisbn", () => {
+
+describe("checkisbn", () => {
     beforeAll(done => {
         done()
     });
 
     it("should respond with a 500 status code for an empty request body", async () => {
 
-        await getBookByisbn({}, res);
+        await checkisbn({}, res);
         expect(res.statusCode).toBe(500)
     });
 
@@ -22,7 +23,7 @@ describe("getBookByisbn", () => {
                 "isbn":""
             }
         }
-        await getBookByisbn(req, res);
+        await checkisbn(req, res);
         expect(res.statusCode).toBe(500)
     });
 
@@ -34,7 +35,7 @@ describe("getBookByisbn", () => {
                 "isbn":"1"
             }
         }
-        await getBookByisbn(req, res);
+        await checkisbn(req, res);
         expect(res.statusCode).toBe(500)
     });
 
@@ -46,10 +47,10 @@ describe("getBookByisbn", () => {
                 "isbn":"1"
             }
         }
-        await getBookByisbn(req, res);
+        await checkisbn(req, res);
         expect(res.statusCode).toBe(500)
     });
-    it("should respond with a 500 status for a isbn but data return value length is an empty array", async () => {
+    it("should respond with a 200 status for a isbn but data return value length is an empty array", async () => {
         const mock = jest.spyOn(Books, 'find');  // spy on Message.findOne()
         mock.mockImplementation(() => Promise.resolve([]));
         let req = {
@@ -57,21 +58,21 @@ describe("getBookByisbn", () => {
                 "isbn":"1"
             }
         }
-        await getBookByisbn(req, res);
-        expect(res.statusCode).toBe(500)
+        await checkisbn(req, res);
+        expect(res.statusCode).toBe(200)
     });
 
-   /* it("should respond with a 500 status for a isbn but data return value length is an array with an empty object", async () => {
-        const mock = jest.spyOn(Books, 'find');  // spy on Message.findOne()
-        mock.mockImplementation(() => Promise.resolve([{}]));
-        let req = {
-            params: {
-                "isbn":"1"
-            }
-        }
-        await getBookByisbn(req, res);
-        expect(res.statusCode).toBe(500)
-    });*/
+    /* it("should respond with a 500 status for a isbn but data return value length is an array with an empty object", async () => {
+         const mock = jest.spyOn(Books, 'find');  // spy on Message.findOne()
+         mock.mockImplementation(() => Promise.resolve([{}]));
+         let req = {
+             params: {
+                 "isbn":"1"
+             }
+         }
+         await getBookByisbn(req, res);
+         expect(res.statusCode).toBe(500)
+     });*/
 
     it("should respond with a 200 status for a isbn data returned", async () => {
         const mock = jest.spyOn(Books, 'find');  // spy on Message.findOne()
@@ -88,7 +89,7 @@ describe("getBookByisbn", () => {
                 "isbn":"1"
             }
         }
-        await getBookByisbn(req, res);
+        await checkisbn(req, res);
         expect(res.statusCode).toBe(200)
     });
 
