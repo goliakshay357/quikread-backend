@@ -15,16 +15,7 @@ describe("bookEntry", () => {
         await bookEntry({}, res);
         expect(res.statusCode).toBe(500)
     });
-    it("should respond with a 500 status code for an empty isbn", async () => {
 
-        let req = {
-            body: {
-                "isbn":""
-            }
-        }
-        await bookEntry(req, res);
-        expect(res.statusCode).toBe(500)
-    });
     it("should respond with a 500 status for a isbn but return value is null", async () => {
         const mock = jest.spyOn(Books, 'find');  // spy on Message.findOne()
         mock.mockImplementation(() => Promise.resolve(null));

@@ -12,7 +12,7 @@ exports.bookEntry = async(req, res) => {
         // ISBN Checking
         const isbn_checking = await Books.find({ isbn: req.body.isbn });
         if (isbn_checking.length !== 0) {
-            res.status(200).json(httpStatus500({ message: "ISBN Number already exists" }));
+            return res.status(200).json(httpStatus500({ message: "ISBN Number already exists" }));
         }
 
         // Create book entry
