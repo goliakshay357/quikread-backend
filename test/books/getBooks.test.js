@@ -1,5 +1,5 @@
-const {getBooks} = require('../controllers/books/getBooks');
-const {Books} = require("../models/db");
+const {getBooks} = require('../../controllers/books/getBooks');
+const {Books} = require("../../models/db");
 const res = {
     json: function(d) {},
     status: function(s) {this.statusCode = s; return this;}
